@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webapi_first_course/screens/commom/confirmation_dialog.dart';
 import 'package:flutter_webapi_first_course/services/auth_service.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -55,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        login();
+                        login(context);
                       }, child: const Text("Continuar")),
                 ],
               ),
@@ -65,10 +66,36 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-  login() {
+  login(BuildContext context) {
     String email = _emailController.text;
     String password = _passwordController.text;
 
-    service.login(email: email, password: password);
+    try {
+      service.login(
+          email: email,
+          password: password
+      ).then((resultLogin) {
+        if(resultLogin) {
+          Navigator.pushReplacementNamed(context, "home");
+        }
+      });
+    } on UserNotFoundException {
+      showConfirmationDialog(
+          context,
+          content: "Deseja criar um novo usuário com essas credenciais?",
+          affirmativeOption: "Criar"
+      ).then((value) {
+        if(value!=null && value) {
+          service.register(
+              email: email,
+              password: password
+          ).then((resultRegister) {
+            if(resultRegister) {
+              Navigator.pushReplacementNamed(context, "home");
+            }
+          });
+        }
+      });
+    }
   }
 }

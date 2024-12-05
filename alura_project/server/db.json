@@ -1,11 +1,18 @@
 {
+  "users": [
+    {
+      "email": "rennandev7@gmail.com",
+      "password": "$2a$10$c0uxAXg9wj3ps8.4YH7MOuOwdrKDR2s9z7lEEY76n56ju2DRFKD32",
+      "id": 1
+    }
+  ],
   "learnhttp": [],
   "journals": [
     {
-      "id": "717eb880-b251-11ef-b39c-e3f6ce157d0a",
-      "content": "Hoje eu corri",
-      "created_at": "2024-11-25 15:05:58.187176",
-      "updated_at": "2024-11-25 15:05:58.187176"
+      "id": "74987c00-b29b-11ef-8555-a9a381179489",
+      "content": "Falta eu ir correr",
+      "created_at": "2024-12-04 23:30:08.309272",
+      "updated_at": "2024-12-04 23:30:08.309272"
     }
   ]
 }

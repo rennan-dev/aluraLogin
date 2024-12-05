@@ -11,7 +11,7 @@ class LoggerInterceptor extends InterceptorContract {
     required BaseRequest request,
   }) async {
     //print('----- Request -----');
-    logger.v("Requisição para ${request.url}\nCabeçalhos: ${request.headers}\nCorpo: ${request.toString()}");
+    logger.t("Requisição para ${request.url}\nCabeçalhos: ${request.headers}\nCorpo: ${request.toString()}");
     return request;
   }
 
